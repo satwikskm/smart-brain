@@ -1,25 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './Component/Navigation/Navigation';
+import Logo from './Component/Logo/Logo';
+import ImageLinkForm from './Component/ImageLinkForm/ImageLinkForm';
+import Rank from './Component/Rank/Rank'
+import Particles from 'react-particles-js';
+import { Component } from 'react';
+const particleoption ={
+  "particles": {
+      "number": {
+          "value": 100
+      },
+      "size": {
+          "value": 5
+      }
+  },
+  "interactivity": {
+      "events": {
+          "onhover": {
+              "enable": true,
+              "mode": "repulse"
+          }
+      }
+  }
+}
 
-function App() {
+
+class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      input:'',
+    }
+  }
+
+  onInputChange=(event)=>{
+    console.log(event);
+  }
+  onButtonSubmit=()=>{
+    console.log('click');
+  }
+  render(){
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Particles className='particles'
+    params={particleoption} />
+      {/*<h1>Om Namaha Laxmi Narayana</h1>*/}
+      <Navigation />
+      <Logo />
+      <Rank />
+      <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
+      {/*
+      <FaceRecognition />*/}
     </div>
   );
+ }
 }
 
 export default App;
